@@ -20,7 +20,11 @@ USER_AGENTS = [
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/112.0.0.0 Safari/537.36",
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/113.0.0.0 Safari/537.36",
   "Mozilla/5.0 (Linux; Android 10; SM-G973F) AppleWebKit/537.36 Chrome/110.0.5481.65 Mobile Safari/537.36",
-  "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 Chrome/99.0.4844.51 Safari/537.36"
+  "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 Chrome/99.0.4844.51 Safari/537.36",
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/115.0.5790.170 Safari/537.36",
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4_1) AppleWebKit/537.36 Chrome/115.0.5790.170 Safari/537.36",
+  "Mozilla/5.0 (Android 13; Mobile; rv:109.0) Gecko/109.0 Firefox/113.0",
+  "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/537.36 Chrome/115.0.5790.170 Mobile Safari/537.36"
 ]
 
 # Fetch fresh proxies
@@ -82,16 +86,16 @@ def connect_websocket(email, api_token, proxy)
   ws_url = "wss://ws.blockmesh.xyz/ws?email=#{email}&api_token=#{api_token}"
   begin
     ws = WebSocket::Client::Simple.connect(ws_url)
-    puts "#{GREEN}🛰️ WebSocket Connected for #{email}! 🚀#{RESET}"
+    puts "#{GREEN}🛰️ WebSocket Connected: #{email} | Proxy: #{proxy ? "#{proxy[:host]}:#{proxy[:port]}" : "Direct"} 🚀#{RESET}"
     ws.close
   rescue
-    puts "#{RED}⚠️ WebSocket Failed for #{email}! Retrying...#{RESET}"
+    puts "#{RED}⚠️ WebSocket Failed: #{email} | Proxy: #{proxy ? "#{proxy[:host]}:#{proxy[:port]}" : "Direct"}#{RESET}"
   end
 end
 
 # Submit Bandwidth
 def submit_bandwidth(email, api_token, proxy)
-  puts "#{YELLOW}🔄 Uploading Bandwidth for #{email}...#{RESET}"
+  puts "#{YELLOW}🔄 Uploading Bandwidth: #{email} | Proxy: #{proxy ? "#{proxy[:host]}:#{proxy[:port]}" : "Direct"}#{RESET}"
   payload = {
     email: email,
     api_token: api_token,
@@ -105,9 +109,9 @@ end
 
 # Fetch Tasks
 def execute_task(email, api_token, proxy)
-  puts "#{BLUE}📜 Fetching Task for #{email}...#{RESET}"
+  puts "#{BLUE}📜 Fetching Task: #{email} | Proxy: #{proxy ? "#{proxy[:host]}:#{proxy[:port]}" : "Direct"}#{RESET}"
   sleep(rand(2..5))
-  puts "#{GREEN}✅ Task Completed for #{email}!#{RESET}"
+  puts "#{GREEN}✅ Task Completed: #{email}#{RESET}"
 end
 
 # Clean UI
@@ -117,10 +121,10 @@ end
 
 # Professional UI Header
 def show_banner
-  puts "#{BOLD}========================#{RESET}"
-  puts "#{BOLD}🔥 BLOCKMESH BOT v1.1 - ULTRA STEALTH 🔥#{RESET}"
+  puts "#{BOLD}======================================#{RESET}"
+  puts "#{BOLD}🔥 BLOCKMESH BOT v1.2 - ULTRA STEALTH 🔥#{RESET}"
   puts "#{BOLD}🚀 Created by Mohsin (Beast Mode ON) 🚀#{RESET}"
-  puts "#{BOLD}========================#{RESET}"
+  puts "#{BOLD}======================================#{RESET}"
 end
 
 # Process Each Account with Random Delays
