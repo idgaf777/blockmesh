@@ -176,7 +176,7 @@ def process_account(email)
 
     elapsed_time = Time.now.to_i - start_time
 
-    if elapsed_time > rand(7200..10800)  # ✅ 2-3 ghante ka delay
+    if elapsed_time > rand(108000..126000)  # ✅ 2-3 ghante ka delay
       puts "#{RED}⏳ Auto Restarting to Avoid Detection...#{RESET}"
       break
     end
