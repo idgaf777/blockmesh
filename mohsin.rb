@@ -24,7 +24,9 @@ USER_AGENTS = [
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/115.0.5790.170 Safari/537.36",
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4_1) AppleWebKit/537.36 Chrome/115.0.5790.170 Safari/537.36",
   "Mozilla/5.0 (Android 13; Mobile; rv:109.0) Gecko/109.0 Firefox/113.0",
-  "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/537.36 Chrome/115.0.5790.170 Mobile Safari/537.36"
+  "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/537.36 Chrome/115.0.5790.170 Mobile Safari/537.36",
+  "Mozilla/5.0 (Windows NT 11.0; Win64; x64) AppleWebKit/537.36 Chrome/117.0.5890.200 Safari/537.36",
+  "Mozilla/5.0 (Linux; Ubuntu 22.04) AppleWebKit/537.36 Chrome/116.0.5845.140 Safari/537.36"
 ]
 
 # Fetch fresh proxies
@@ -111,7 +113,7 @@ end
 def execute_task(email, api_token, proxy)
   puts "#{BLUE}📜 Fetching Task: #{email} | Proxy: #{proxy ? "#{proxy[:host]}:#{proxy[:port]}" : "Direct"}#{RESET}"
   sleep(rand(2..5))
-  puts "#{GREEN}✅ Task Completed: #{email}#{RESET}"
+  puts "#{GREEN}✅ Task Completed: #{email} | Proxy: #{proxy ? "#{proxy[:host]}:#{proxy[:port]}" : "Direct"}#{RESET}"
 end
 
 # Clean UI
@@ -122,7 +124,7 @@ end
 # Professional UI Header
 def show_banner
   puts "#{BOLD}======================================#{RESET}"
-  puts "#{BOLD}🔥 BLOCKMESH BOT v1.2 - ULTRA STEALTH 🔥#{RESET}"
+  puts "#{BOLD}🔥 BLOCKMESH BOT v1.3 - ULTRA STEALTH 🔥#{RESET}"
   puts "#{BOLD}🚀 Created by Mohsin (Beast Mode ON) 🚀#{RESET}"
   puts "#{BOLD}======================================#{RESET}"
 end
